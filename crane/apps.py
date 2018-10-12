@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class CraneConfig(AppConfig):
-    name = 'Crane'
+    name = 'crane'
