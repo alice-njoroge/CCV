@@ -1,7 +1,7 @@
 import random
 
 from decouple import config
-from fabric.api import cd, env, run, local, sudo
+from fabric.api import cd, run, local, sudo
 from fabric.contrib.files import exists, append
 
 REPO_URL = 'git@github.com:alice-njoroge/CCV.git'
@@ -13,7 +13,7 @@ def deploy():
     with cd(site_folder):
         _get_latest_source()
         _update_virtualenv()
-        _create_or_update_dotenv_live()
+        # _create_or_update_dotenv_live()
         _update_static_files()
         _update_database()
         _create_main_server_folders()
@@ -71,14 +71,14 @@ def _create_main_server_folders():
 
 def _create_main_webserver_files():
     if not exists('/home/nanoafrika/ccv_supervisior'):
-        run('cp deploy_tools/ccv_supervisior /home/nanoafrika/')
+        run('cp deploying_tools/ccv_supervisior /home/nanoafrika/')
         run('chmod u+x /home/nanoafrika/ccv_supervisior')
         run('touch /home/nanoafrika/logs/ccv.log')
-        sudo('cp deploy_tools/ccv.conf /etc/supervisor/conf.d/')
+        sudo('cp deploying_tools/ccv.conf /etc/supervisor/conf.d/')
         sudo('sudo supervisorctl reread')
         sudo('sudo supervisorctl update')
         sudo('sudo supervisorctl status ccv')
-        sudo('cp deploy_tools/nginx.template.conf /etc/nginx/sites-available/ccv')
+        sudo('cp deploying_tools/nginx.template.conf /etc/nginx/sites-available/ccv')
         sudo('ln -s /etc/nginx/sites-available/ccv /etc/nginx/sites-enabled/ccv')
         sudo('service nginx restart')
 
