@@ -39,6 +39,7 @@ class Carousel(models.Model):
     image = models.ImageField(upload_to='carousels/',
                               help_text='This is one of the images on the carousel slider',
                               validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])])
+    caption = models.CharField(max_length=200, blank=True)
     position = models.PositiveSmallIntegerField(choices=POSITIONS, unique=True)
 
     def image_url(self):

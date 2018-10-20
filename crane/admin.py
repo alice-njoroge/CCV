@@ -13,7 +13,7 @@ class ContactMessageAdmin(admin.ModelAdmin):
 
 
 class CarouselAdmin(admin.ModelAdmin):
-    list_display = ('image_url', 'position')
+    list_display = ('image_url', 'caption', 'position')
     radio_fields = {"position": admin.HORIZONTAL}
 
     def has_add_permission(self, request):
@@ -24,7 +24,6 @@ class CarouselAdmin(admin.ModelAdmin):
 
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Carousel, CarouselAdmin)
-
 
 admin.site.site_title = 'CCV Admin'
 admin.site.site_header = 'CCV Admin'
