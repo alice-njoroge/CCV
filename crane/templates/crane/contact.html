@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
     <div class="contact">
         <div class="container">
@@ -23,15 +24,9 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="col-md-9 contact-left">
-                        <form>
-                            <input type="text" value="Name" onfocus="this.value = '';"
-                                   onblur="if (this.value === '') {this.value = 'Name';}"/>
-                            <input type="text" value="Email" onfocus="this.value = '';"
-                                   onblur="if (this.value === '') {this.value = 'Email';}"/>
-                            <input type="text" value="Phone" onfocus="this.value = '';"
-                                   onblur="if (this.value === '') {this.value = 'Phone';}"/>
-                            <textarea value="Message:" onfocus="this.value = '';"
-                                      onblur="if (this.value === '') {this.value = 'Message';}">Message..</textarea>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form|crispy }}
                             <div class="submit-btn">
                                 <input type="submit" value="SUBMIT">
                             </div>

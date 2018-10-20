@@ -4,10 +4,10 @@ from django.utils import timezone
 
 
 class ContactMessage(models.Model):
-    customer_names = models.CharField(max_length=100)
-    customer_email = models.EmailField()
-    customer_phone = models.CharField(max_length=100, blank=True, null=True)
-    message_subject = models.TextField()
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=100, blank=True, null=True)
+    subject = models.CharField(max_length=255)
     message = models.TextField()
     sent_at = models.DateTimeField(default=timezone.now)
     read = models.BooleanField(default=False)
@@ -19,6 +19,5 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return self.message_subject
-
 
 # Create your models here.

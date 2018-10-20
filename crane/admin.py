@@ -6,10 +6,10 @@ from .models import ContactMessage
 
 class ContactMessageAdmin(admin.ModelAdmin):
     list_per_page = 10
-    search_fields = ('customer_names', 'customer_email')
+    search_fields = ('names', 'email')
     list_display = (
-        'customer_names', 'customer_email', 'customer_phone', 'message_subject', 'read_message', 'sent_at', 'read')
-    exclude = ('customer_names', 'customer_email', 'customer_phone', 'message_subject', 'message', 'sent_at', 'read')
+        'name', 'email', 'phone_number', 'subject', 'read_message', 'sent_at', 'read')
+    exclude = ('names', 'email', 'phone_number', 'subject', 'message', 'sent_at', 'read')
 
 
 admin.site.register(ContactMessage, ContactMessageAdmin)
