@@ -16,6 +16,15 @@ class CarouselAdmin(admin.ModelAdmin):
     list_display = ('image_url', 'position')
     radio_fields = {"position": admin.HORIZONTAL}
 
+    def has_add_permission(self, request):
+        if Carousel.objects.count() > 4:
+            return False
+        return True
+
 
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Carousel, CarouselAdmin)
+
+
+admin.site.site_title = 'CCV Admin'
+admin.site.site_header = 'CCV Admin'

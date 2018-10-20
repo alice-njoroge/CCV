@@ -1,8 +1,10 @@
+from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.html import format_html
+from django.core.files.images import get_image_dimensions
 
 
 class ContactMessage(models.Model):
@@ -55,3 +57,8 @@ class Carousel(models.Model):
 
     class Meta:
         ordering = ('position',)
+
+    def clean(self):
+        w, h = get_image_dimensions(self.image)
+        if w < 676 or h < 507:
+            raise ValidationError({'image': 'The image needs to be 676 * 507 pixels'})

@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
 from django.core.mail import send_mail
+from .models import Carousel
 
 
 def home(request):
-    return render(request, 'crane/index.html')
+    carousel = Carousel.objects.all()
+    return render(request, 'crane/index.html', {'carousel': carousel})
 
 
 def about(request):

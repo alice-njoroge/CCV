@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     # project apps
-    'crane'
+    'crane.apps.CraneConfig'
 ]
 
 MIDDLEWARE = [
