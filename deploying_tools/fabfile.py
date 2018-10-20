@@ -8,7 +8,7 @@ REPO_URL = 'git@github.com:alice-njoroge/CCV.git'
 
 
 def deploy():
-    site_folder = f'/home/{env.user}/CCV'
+    site_folder = f'/home/nanoafrika/CCV'
     run(f'mkdir  -p {site_folder}')
     with cd(site_folder):
         _get_latest_source()
