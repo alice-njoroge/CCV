@@ -44,32 +44,18 @@
 
             </div>
             <div class="col-md-6 banner-right">
-                <div class="bnr-right grid1">
-                    <div class="banner_rght_info">
-                        <p><a href="../crane/templates/crane/projects.html">Community Education</a></p>
-                        <h4>Mary W. volunteering in community education and training on cranes.</h4>
+                {% for home_right_image in home_right_images %}
+                    <div class="bnr-right grid{{ forloop.counter }}"
+                         style="background: url({{ home_right_image.image.url }})">
+                        <div class="banner_rght_info">
+                            <p><a href="{{ home_right_image.image.url }}">{{ home_right_image.title }}</a></p>
+                            <h4>{{ home_right_image.subtitle }}</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="bnr-right grid2">
-                    <div class="banner_rght_info bnr_rht">
-                        <p><a href="../crane/templates/crane/projects.html">Awards</a></p>
-                        <h4>David W. receiving awards during an environment conservation event in Kenya </h4>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="bnr-right grid3">
-                    <div class="banner_rght_info">
-                        <p><a href="../crane/templates/crane/projects.html">Nest Visiting</a></p>
-                        <h4>Nest Visiting trip and promoting safety of the chicks </h4>
-                    </div>
-                </div>
-                <div class="bnr-right grid4">
-                    <div class="banner_rght_info bnr_rht">
-                        <p><a href="../crane/templates/crane/projects.html">hatching</a></p>
-                        <h4>An egg hatching into a young crane (colt), nestling is very important at this stage </h4>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="clearfix"></div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="clearfix"></div>
         </div>
