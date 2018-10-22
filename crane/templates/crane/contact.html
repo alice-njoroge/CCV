@@ -5,6 +5,11 @@
         <div class="container">
             <div class="contact-top">
                 <h2>Contact</h2>
+                {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             </div>
             <div class="contact-bottom">
                 <div class="contact-text">
