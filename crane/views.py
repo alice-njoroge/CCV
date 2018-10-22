@@ -19,11 +19,11 @@ def about(request):
 
 
 def gallery(request):
-    return render(request, 'gallery.html')
+    return render(request, 'crane/gallery.html')
 
 
 def typo(request):
-    return render(request, 'typo.html')
+    return render(request, 'crane/typo.html')
 
 
 def contact(request):
