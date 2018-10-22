@@ -70,5 +70,20 @@ class HomeRight(models.Model):
     title = models.CharField(max_length=50)
     subtitle = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name_plural = 'Home Right Images'
+        verbose_name = 'Home Right Image'
+
+    def image_url(self):
+        """allow image to be displayed in the admin as a thumbnail"""
+        url = self.image.url
+        return format_html(
+            '<a href="{}"><img style="height:70px;width:70px;" alt="25" src="{}"/></a>',
+            url,
+            url
+        )
+
+    image_url.allow_tags = True
+
     def __str__(self):
         return self.title

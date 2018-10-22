@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import ContactMessage, Carousel
+from .models import ContactMessage, Carousel, HomeRight
+from django.contrib import messages
 
 
 # Register your models here.
@@ -22,8 +23,26 @@ class CarouselAdmin(admin.ModelAdmin):
         return True
 
 
+class HomeRightAdmin(admin.ModelAdmin):
+    list_display = ('image_url', 'title', 'subtitle')
+
+    def has_add_permission(self, request):
+        if HomeRight.objects.count() > 3:
+            return False
+        return True
+
+    def save_model(self, request, obj, form, change):
+        object = super(HomeRightAdmin, self).save_model(request=request, obj=obj, form=form, change=change)
+        count = HomeRight.objects.count()
+        if count <= 3:
+            remaining = 4 - count
+            self.message_user(request, f'{remaining} more images to go! please keep adding!', level=messages.WARNING)
+            return object
+
+
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Carousel, CarouselAdmin)
+admin.site.register(HomeRight, HomeRightAdmin)
 
 admin.site.site_title = 'CCV Admin'
 admin.site.site_header = 'CCV Admin'
