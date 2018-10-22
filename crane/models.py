@@ -63,3 +63,12 @@ class Carousel(models.Model):
         w, h = get_image_dimensions(self.image)
         if w < 676 or h < 507:
             raise ValidationError({'image': 'The image needs to be 676 * 507 pixels'})
+
+
+class HomeRight(models.Model):
+    image = models.ImageField(upload_to='home/')
+    title = models.CharField(max_length=50)
+    subtitle = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
