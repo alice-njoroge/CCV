@@ -43,10 +43,10 @@
                 </div>
 
             </div>
-            <div class="col-md-6 banner-right">
+            <div class="col-md-6 banner-right" style="height: inherit">
                 {% for home_right_image in home_right_images %}
                     <div class="bnr-right grid{{ forloop.counter }}"
-                         style="background: url({{ home_right_image.image.url }})">
+                         style="background: url({{ home_right_image.image.url }}); height: 50%">
                         <div class="banner_rght_info">
                             <p><a href="{{ home_right_image.image.url }}">{{ home_right_image.title }}</a></p>
                             <h4>{{ home_right_image.subtitle }}</h4>
