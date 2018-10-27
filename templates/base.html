@@ -4,35 +4,26 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+{% load static %}
 <!DOCTYPE HTML>
 <html>
 <head>
+    <title>{% block title %}
 
-    {% load static %}
-    <title> Crane Conservation Volunteers</title>
-    <link href="{% static 'css/bootstrap.css' %} " rel='stylesheet' type='text/css'/>
-    <link href="{% static 'css/bootstrap.min.css' %} " rel='stylesheet' type='text/css'/>
-    <!-- jQuery (necessary JavaScript plugins) -->
-    <script src="{% static 'js/bootstrap.js' %} "></script>
-    <!-- Custom Theme files -->
-    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
-    <link href="{% static 'css/style.css' %} " rel='stylesheet' type='text/css'/>
+    {% endblock %} Crane Conservation Volunteers</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- Custom Theme files -->
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="Wildlife Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-
+    <meta name="keywords" content=""/>
+    {#    <script type="application/x-javascript"> addEventListener("load", function () {#}
+    {#        setTimeout(hideURLbar, 0);#}
+    {#    }, false);#}
+    {##}
+    {#    function hideURLbar() {#}
+    {#        window.scrollTo(0, 1);#}
+    {#    } </script>#}
 </head>
 <body>
 <!-- banner -->
@@ -40,23 +31,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header-top">
         <div class="container">
             <div class="logo">
-                <h1><a href="{% url 'home' %}">Crane Conservation Volunteers</a></h1>
+                <h1><a href="">
+                    <img src="{% static 'images/ccv logo.jpg' %}" width="100" height="70">Crane Conversation Volunteers</a></h1>
             </div>
             <div class="details">
                 <div class="locate">
                     <div class="detail-grid">
                         <div class="lctr">
-                            <img src="static/images/lct.png" alt=""/>
+                            <img src="images/lct.png" alt=""/>
                         </div>
-                        <p> located in Kenya
-                            <span>Nyahururu</span></p>
+                        <p>Nyahururu town,
+                            <span>Kenya.</span></p>
                         <div class="clearfix"></div>
                     </div>
                     <div class="detail-grid">
                         <div class="lctr">
-                            <img src="static/images/phn.png" alt=""/>
+                            <img src="images/phn.png" alt=""/>
                         </div>
-                        <p>Tel:+2547 111 111</p>
+                        <p>Tel:+254 799 172 096</p>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -67,15 +59,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header">
         <div class="container">
             <div class="top-menu">
-                <span class="menu"><img src="static/images/menu.png" alt=""></span>
+                <span class="menu"><img src="images/menu.png" alt=""></span>
                 <ul class="nav1">
-
-                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="">Projects</a></li>
-                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                    <li><a href="{% url 'typo' %}">News/stories </a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="typo.html">Typo</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <!-- script-for-menu -->
@@ -100,26 +91,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {% block content %}
 
     {% endblock %}
-
-    <script src="js/lightbox-plus-jquery.min.js"></script>
-
-    <!--
-   <div class="footer">
-
-   </div>-->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-sec">
+                <div class="col-md-4 ftr-grid1">
+                    <h3>Latest Tweets</h3>
+                    <div class="twts">
+                        <h5>Nunc porta justo eu varius mattis.</h5>
+                        <a href="mailto:example@gmail.com">http://www.example.com</a>
+                    </div>
+                    <div class="twts">
+                        <h5>Nunc porta justo eu varius mattis.</h5>
+                        <a href="mailto:example@gmail.com">http://www.example.com</a>
+                    </div>
+                </div>
+                <div class="col-md-4 news-ltr">
+                    <h3>NewsLetter</h3>
+                    <p>Praesent ex lectus, luctus ut enim sed, scelerisque laoreet massa. Fusce rhoncus massa dignissim
+                        suscipit varius.
+                        Donec vel congue libero. </p>
+                    <form>
+                        <input type="text" class="text" value="Enter Email" onfocus="this.value = '';"
+                               onblur="if (this.value == '') {this.value = 'Enter Email';}">
+                        <input type="submit" value="Go">
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class="col-md-4 social">
+                    <h3>Social Media</h3>
+                    <a href="#"><i class="facebook"></i></a>
+                    <a href="#"><i class="twitter"></i></a>
+                    <a href="#"><i class="dribble"></i></a>
+                    <a href="#"><i class="google"></i></a>
+                    <a href="#"><i class="youtube"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
     <!---->
     <div class="copywrite">
         <div class="container">
             <div class="ftr-logo">
-                <h3><a href="{% url 'home' %}">Cranes Conservation Volunteers</a></h3>
+                <h3><a href="index.html"><img src="{% static 'images/ccv logo.jpg' %}"> Crane Conservation
+                    Volunteers</a></h3>
             </div>
             <div class="ftr-right">
-                <p>Copyright © 2018 CCV. All rights reserved | Design by <a href="#!">Michael
-                    Kagiri</a></p>
+                <p>Copyright © 2015 Wild Life. All rights reserved | Design by <a
+                        href="http://w3layouts.com">W3layouts</a>
+                </p>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
     <!---->
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

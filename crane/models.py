@@ -39,7 +39,8 @@ class Carousel(models.Model):
     image = models.ImageField(upload_to='carousels/',
                               help_text='This is one of the images on the carousel slider',
                               validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])])
-    caption = models.CharField(max_length=200, blank=True)
+    caption = models.CharField(max_length=200, null=True)
+    sub_caption = models.CharField(max_length=200, null=True)
     position = models.PositiveSmallIntegerField(choices=POSITIONS, unique=True)
 
     def image_url(self):
@@ -60,9 +61,10 @@ class Carousel(models.Model):
         ordering = ('position',)
 
     def clean(self):
-        w, h = get_image_dimensions(self.image)
-        if w < 676 or h < 507:
-            raise ValidationError({'image': 'The image needs to be 676 * 507 pixels'})
+        if self.image:
+            w, h = get_image_dimensions(self.image)
+            if w < 676 or h < 507:
+                raise ValidationError({'image': 'The image needs to be 676 * 507 pixels'})
 
 
 class HomeRight(models.Model):
@@ -87,3 +89,15 @@ class HomeRight(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Welcome(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Welcome Section'
+        verbose_name_plural = 'Welcome Section'
