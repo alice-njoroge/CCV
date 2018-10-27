@@ -1,0 +1,30 @@
+{
+  "name": "ccv",
+  "version": "1.0.0",
+  "description": "Crane conservation volunteers",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alice-njoroge/CCV.git"
+  },
+  "keywords": [
+    "conservations",
+    "wildlife",
+    "crane"
+  ],
+  "author": "Alice Njoroge <alicenjoroge707@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alice-njoroge/CCV/issues"
+  },
+  "homepage": "https://github.com/alice-njoroge/CCV#readme",
+  "devDependencies": {
+    "laravel-mix": "^2.1.14"
+  }
+}
