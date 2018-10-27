@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactMessage, Carousel, HomeRight
+from .models import ContactMessage, Carousel, HomeRight, Welcome
 from django.contrib import messages
 
 
@@ -40,9 +40,19 @@ class HomeRightAdmin(admin.ModelAdmin):
             return object
 
 
+class WelcomeAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+
+    def has_add_permission(self, request):
+        if Welcome.objects.count() > 4:
+            return False
+        return True
+
+
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Carousel, CarouselAdmin)
 admin.site.register(HomeRight, HomeRightAdmin)
+admin.site.register(Welcome, WelcomeAdmin)
 
 admin.site.site_title = 'CCV Admin'
 admin.site.site_header = 'CCV Admin'
