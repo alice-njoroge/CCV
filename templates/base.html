@@ -17,13 +17,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content=""/>
-    {#    <script type="application/x-javascript"> addEventListener("load", function () {#}
-    {#        setTimeout(hideURLbar, 0);#}
-    {#    }, false);#}
-    {##}
-    {#    function hideURLbar() {#}
-    {#        window.scrollTo(0, 1);#}
-    {#    } </script>#}
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
 </head>
 <body>
 <!-- banner -->
@@ -31,14 +31,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="header-top">
         <div class="container">
             <div class="logo">
-                <h1><a href="">
-                    <img src="{% static 'images/ccv logo.jpg' %}" width="100" height="70">Crane Conversation Volunteers</a></h1>
+                <h1><a href="{% url 'home' %}">
+                    <img src="{% static 'images/ccv logo.jpg' %}" width="100" height="70">Crane Conversation Volunteers</a>
+                </h1>
             </div>
             <div class="details">
                 <div class="locate">
                     <div class="detail-grid">
                         <div class="lctr">
-                            <img src="images/lct.png" alt=""/>
+                            <img src="{% static 'images/lct.png' %}" alt=""/>
                         </div>
                         <p>Nyahururu town,
                             <span>Kenya.</span></p>
@@ -46,7 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <div class="detail-grid">
                         <div class="lctr">
-                            <img src="images/phn.png" alt=""/>
+                            <img src="{% static 'images/phn.png' %}" alt=""/>
                         </div>
                         <p>Tel:+254 799 172 096</p>
                         <div class="clearfix"></div>
@@ -59,33 +60,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="header">
         <div class="container">
             <div class="top-menu">
-                <span class="menu"><img src="images/menu.png" alt=""></span>
+                <span class="menu"><img src="{% static 'images/menu.png' %}" alt=""></span>
                 <ul class="nav1">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="typo.html">Typo</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'gallery' %}">Projects</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="">Donate Now</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
             </div>
-            <!-- script-for-menu -->
-            <script>
-                $("span.menu").click(function () {
-                    $("ul.nav1").slideToggle(300, function () {
-                        // Animation complete.
-                    });
-                });
-            </script>
-            <!-- /script-for-menu -->
-
-            <div class="search">
-                <form>
-                    <input type="text" value="" placeholder="Search...">
-                    <input type="submit" value="">
-                </form>
-            </div>
-            <div class="clearfix"></div>
         </div>
     </div>
     {% block content %}
@@ -144,7 +128,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="clearfix"></div>
         </div>
     </div>
-    <!---->
-    <script src="{% static 'js/main.js' %}"></script>
+</div>
+<!---->
+<script src="{% static 'js/main.js' %}"></script>
+<!-- script-for-menu -->
+<script>
+    $("span.menu").click(function () {
+        $("ul.nav1").slideToggle(300, function () {
+            // Animation complete.
+        });
+    });
+</script>
+<!-- /script-for-menu -->
 </body>
 </html>
