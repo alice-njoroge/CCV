@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.html import format_html
 from django.core.files.images import get_image_dimensions
+from django.utils.timezone import now
 
 
 class ContactMessage(models.Model):
@@ -101,3 +102,18 @@ class Welcome(models.Model):
     class Meta:
         verbose_name = 'Welcome Section'
         verbose_name_plural = 'Welcome Section'
+
+
+class DonationPledge(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(blank=True, null=True)
+    phone = models.CharField(verbose_name='Phone Number', max_length=15)
+    amount = models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Amount to Donate')
+    pledged_on = models.DateTimeField(default=now)
+    extra = models.TextField(verbose_name='Extra Details', blank=True)
+
+    def __str__(self):
+        return f'of {str(self.amount)} by {self.name}'
+
+    class Meta:
+        ordering = ('-pledged_on',)
