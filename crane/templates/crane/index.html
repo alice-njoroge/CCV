@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
     Home |
 {% endblock %}
@@ -36,7 +37,7 @@
     <div class="content">
         <div class="container">
             <div class="content-grids">
-                <div class="col-md-8 col-md-offset-2 content-left">
+                <div class="col-md-5 content-left">
                     <div class="cntnt-head">
                         <h3>Welcome</h3>
                         <span></span>
@@ -73,6 +74,34 @@
                             </div>
                         {% endfor %}
                     </div>
+                </div>
+                <div class="col-md-7 content-right">
+                    <div class="cntnt-head">
+                        <h3>Team</h3>
+                        <span></span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque distinctio, doloremque esse
+                        laboriosam porro sapiente sit soluta sunt voluptatem voluptatum? Aliquid animi esse illo impedit
+                        in laudantium optio sit, voluptate.</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque autem cupiditate
+                        dignissimos error eum ex id impedit ipsum iure, neque nostrum obcaecati, optio possimus repellat
+                        repellendus sapiente suscipit voluptas.</p>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque autem cupiditate
+                        dignissimos error eum ex id impedit ipsum iure, neque nostrum obcaecati, optio possimus repellat
+                        repellendus sapiente suscipit voluptas.</p>
+                    <br>
+                    {% for team in teams %}
+                        <div class="grid_4">
+                            <div class="team-grid">
+                                <img src="{{ team.image.url }}" alt="">
+                                <h4>{{ team.title }}</h4>
+                                <p>{{ team.name }} </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
                 </div>
             </div>
             <div class="clearfix"></div>

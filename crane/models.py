@@ -138,3 +138,28 @@ class Service(models.Model):
         )
 
     image_url.allow_tags = True
+
+
+class Team(models.Model):
+    title = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='team/')
+    added_on = models.DateTimeField(auto_now_add=True)
+    position = models.IntegerField(null=True, unique=True)
+
+    class Meta:
+        ordering = ('position',)
+
+    def __str__(self):
+        return self.name
+
+    def image_url(self):
+        """allow image to be displayed in the admin as a thumbnail"""
+        url = self.image.url
+        return format_html(
+            '<a href="{}"><img style="height:70px;width:70px;" alt="25" src="{}"/></a>',
+            url,
+            url
+        )
+
+    image_url.allow_tags = True

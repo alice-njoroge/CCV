@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib import messages
 
-from .models import ContactMessage, Carousel, HomeRight, Welcome, DonationPledge, Service
+from .models import ContactMessage, Carousel, HomeRight, Welcome, DonationPledge, Service, Team
 
 
 # Register your models here.
@@ -63,12 +63,17 @@ class ServicesAdmin(admin.ModelAdmin):
     list_display = ('title', 'image_url')
 
 
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ('position', 'title', 'name', 'image_url', 'added_on')
+
+
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Carousel, CarouselAdmin)
 admin.site.register(HomeRight, HomeRightAdmin)
 admin.site.register(Welcome, WelcomeAdmin)
 admin.site.register(DonationPledge, DonationPledgeAdmin)
 admin.site.register(Service, ServicesAdmin)
+admin.site.register(Team, TeamAdmin)
 
 admin.site.site_title = 'CCV Admin'
 admin.site.site_header = 'CCV Admin'
