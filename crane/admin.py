@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib import messages
 
-from .models import ContactMessage, Carousel, HomeRight, Welcome, DonationPledge
+from .models import ContactMessage, Carousel, HomeRight, Welcome, DonationPledge, Service
 
 
 # Register your models here.
@@ -52,6 +52,11 @@ class WelcomeAdmin(admin.ModelAdmin):
 
 class DonationPledgeAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone', 'amount', 'pledged_on')
+    fields = ('name', ('email', 'phone'), 'amount', ('pledged_on', 'when'), 'extra')
+
+
+class ServicesAdmin(admin.ModelAdmin):
+    list_display = ('title', 'image_url')
 
 
 admin.site.register(ContactMessage, ContactMessageAdmin)
@@ -59,5 +64,7 @@ admin.site.register(Carousel, CarouselAdmin)
 admin.site.register(HomeRight, HomeRightAdmin)
 admin.site.register(Welcome, WelcomeAdmin)
 admin.site.register(DonationPledge, DonationPledgeAdmin)
+admin.site.register(Service, ServicesAdmin)
+
 admin.site.site_title = 'CCV Admin'
 admin.site.site_header = 'CCV Admin'

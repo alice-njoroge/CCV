@@ -110,6 +110,7 @@ class DonationPledge(models.Model):
     phone = models.CharField(verbose_name='Phone Number', max_length=15)
     amount = models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Amount to Donate')
     pledged_on = models.DateTimeField(default=now)
+    when = models.DateField(verbose_name='When to donate', null=True, blank=True)
     extra = models.TextField(verbose_name='Extra Details', blank=True)
 
     def __str__(self):
@@ -117,3 +118,23 @@ class DonationPledge(models.Model):
 
     class Meta:
         ordering = ('-pledged_on',)
+
+
+class Service(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='services/')
+
+    def __str__(self):
+        return self.title
+
+    def image_url(self):
+        """allow image to be displayed in the admin as a thumbnail"""
+        url = self.image.url
+        return format_html(
+            '<a href="{}"><img style="height:70px;width:70px;" alt="25" src="{}"/></a>',
+            url,
+            url
+        )
+
+    image_url.allow_tags = True
