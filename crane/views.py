@@ -21,7 +21,8 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'crane/about.html')
+    teams = Team.objects.order_by('position')
+    return render(request, 'crane/about.html', {'teams': teams})
 
 
 def gallery(request):
