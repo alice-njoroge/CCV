@@ -11,4 +11,4 @@ class ContactForm(forms.ModelForm):
 class DonationForm(forms.ModelForm):
     class Meta:
         model = DonationPledge
-        fields = ('name', 'email', 'phone', 'amount', 'pledged_on')
+        fields = ('name', 'email', 'phone', 'amount', 'when')

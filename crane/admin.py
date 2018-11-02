@@ -51,8 +51,12 @@ class WelcomeAdmin(admin.ModelAdmin):
 
 
 class DonationPledgeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone', 'amount', 'pledged_on')
+    list_display = ('name', 'email', 'phone', 'amount', 'pledged_on', 'action')
+    list_display_links = ('action',)
     fields = ('name', ('email', 'phone'), 'amount', ('pledged_on', 'when'), 'extra')
+
+    def action(self, obj):
+        return 'edit'
 
 
 class ServicesAdmin(admin.ModelAdmin):

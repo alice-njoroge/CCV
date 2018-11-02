@@ -36,7 +36,7 @@
     <div class="content">
         <div class="container">
             <div class="content-grids">
-                <div class="col-md-5 content-left">
+                <div class="col-md-8 col-md-offset-2 content-left">
                     <div class="cntnt-head">
                         <h3>Welcome</h3>
                         <span></span>
@@ -74,78 +74,35 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-md-7 content-right">
-                    <div class="cntnt-head">
-                        <h3>Make a Donation</h3>
-                        <span></span>
-                    </div>
-                    <div class="contact-left">
-                        <form>
-                            <input type="text" value="Name"/>
-                            <input type="text" value="Email" onfocus="this.value = '';"
-                                   onblur="if (this.value == '') {this.value = 'Email';}"/>
-                            <input type="text" value="Phone" onfocus="this.value = '';"
-                                   onblur="if (this.value == '') {this.value = 'Phone';}"/>
-                            <textarea value="Message:" onfocus="this.value = '';"
-                                      onblur="if (this.value == '') {this.value = 'Message';}">Message..</textarea>
-                            <div class="submit-btn">
-                                <input type="submit" value="SUBMIT">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
     </div>
     <!---->
-    <div class="service">
-        <div class="container">
-            <h3>Services</h3>
-            <div class="works">
-                <div class="prjt-grid">
-                    <div class="box maxheight">
-                        <a class="example-image-link" href="images/s1.jpg" data-lightbox="example-1"
-                           data-title="Guidance."><img
-                                class="example-image" src="images/s1.jpg"></a>
-                        <div class="project-info">
-                            <a href="single.html">Guidance</a>
-                            <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu
-                                fringilla
-                                estero libero orciwe. </p>
+    {% if services.exists %}
+        <div class="service">
+            <div class="container">
+                <h3>Services</h3>
+                <div class="works">
+                    {% for service in services %}
+                        <div class="prjt-grid {% if forloop.last %} span66 {% endif %}">
+                            <div class="box maxheight">
+                                <a class="example-image-link" href="#" data-lightbox="example-1"
+                                   data-title="{{ service.title }}"><img
+                                        class="example-image" src="{{ service.image.url }}"></a>
+                                <div class="project-info">
+                                    <a href="#">{{ service.title }}</a>
+                                    <p>{{ service.description|truncatechars:200 }} </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
                 </div>
-                <div class="prjt-grid">
-                    <div class="box maxheight">
-                        <a class="example-image-link" href="images/s2.jpg" data-lightbox="example-2"
-                           data-title="Mobile Tents."><img class="example-image" src="images/s2.jpg"></a>
-                        <div class="project-info">
-                            <a href="single.html">Mobile Tents</a>
-                            <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu
-                                fringilla
-                                estero libero orciwe. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="prjt-grid span66">
-                    <div class="box maxheight">
-                        <a class="example-image-link" href="images/s3.jpg" data-lightbox="example-3"
-                           data-title="Animal Care."><img class="example-image" src="images/s3.jpg"></a>
-                        <div class="project-info">
-                            <a href="single.html">Animal Care</a>
-                            <p>Kuspendisse laoreet augue iderti wer interdum merti oremolo lectusto odio, sedorolu
-                                fringilla
-                                estero libero orciwe.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
             </div>
         </div>
-    </div>
+    {% endif %}
     <script src="js/lightbox-plus-jquery.min.js"></script>
     <!---->
     <div class="content-bottom">

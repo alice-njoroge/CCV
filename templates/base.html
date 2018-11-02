@@ -68,6 +68,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <li><a href="{% url 'gallery' %}">Gallery</a></li>
                     <li><a href="">Donate Now</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a href="/admin/">Admin</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
