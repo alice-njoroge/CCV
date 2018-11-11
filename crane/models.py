@@ -163,3 +163,25 @@ class Team(models.Model):
         )
 
     image_url.allow_tags = True
+
+
+class Testimonial(models.Model):
+    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, verbose_name='Job Title')
+    avatar = models.ImageField(upload_to='testimonials/')
+    testimonial = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    def avatar_url(self):
+        """allow image to be displayed in the admin as a thumbnail"""
+        url = self.avatar.url
+        return format_html(
+            '<a href="{}"><img style="height:70px;width:70px;" alt="25" src="{}"/></a>',
+            url,
+            url
+        )
+
+    avatar_url.allow_tags = True
