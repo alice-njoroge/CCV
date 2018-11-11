@@ -6,7 +6,7 @@ from .models import (Carousel, HomeRight,
                      Welcome, Service,
                      Team, Testimonial,
                      AboutUs, WhatWeDo,
-                     Activities)
+                     Activities, Project)
 
 
 def home(request):
@@ -43,8 +43,9 @@ def gallery(request):
     return render(request, 'crane/gallery.html')
 
 
-def typo(request):
-    return render(request, 'crane/typo.html')
+def projects(request):
+    projects = Project.objects.all()
+    return render(request, 'crane/projects.html', {'projects': projects})
 
 
 def contact(request):
