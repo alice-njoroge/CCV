@@ -157,34 +157,23 @@
                 </div>
                 <div class="col-md-6 testimonal">
                     <div class="testi-head">
-                        <h3>Testimonals</h3>
+                        <h3>Testimonials</h3>
                         <span></span>
                     </div>
                     <div class="testi-grids">
-                        <div class="testi-grid">
-                            <div class="people">
-                                <img src="images/t1.jpg" class="img-responsive" alt=""/>
+                        {% for testimonial in testimonials %}
+                            <div class="testi-grid {% if forloop.counter  == 2 %}testi2 {% endif %}">
+                                <div class="people">
+                                    <img src="{{ testimonial.avatar.url }}" class="img-responsive" alt=""/>
+                                </div>
+                                <div class="testi-info">
+                                    <h4>{{ testimonial.name }}</h4>
+                                    <a href="#!">{{ testimonial.title }}</a>
+                                    <p>{{ testimonial.testimonial }}</p>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="testi-info">
-                                <h4>John Deo</h4>
-                                <a href="projects.html">Program Director</a>
-                                <p>Nullam viverra porttitor est at vestibulum. Quisque sodales justo eu erat malesuada
-                                    rutrum. Ut orci velit, dignissim ut dui convallis, sagittis cursus sem.</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="testi-grid testi2">
-                            <div class="people">
-                                <img src="images/t2.jpg" class="img-responsive" alt=""/>
-                            </div>
-                            <div class="testi-info">
-                                <h4>John Deo</h4>
-                                <a href="projects.html">Program Director</a>
-                                <p>Nullam viverra porttitor est at vestibulum. Quisque sodales justo eu erat malesuada
-                                    rutrum. Ut orci velit, dignissim ut dui convallis, sagittis cursus sem.</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="clearfix"></div>

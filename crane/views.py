@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
 from django.core.mail import send_mail
-from .models import Carousel, HomeRight, Welcome, Service, Team
+from .models import Carousel, HomeRight, Welcome, Service, Team, Testimonial
 
 
 def home(request):
@@ -11,12 +11,14 @@ def home(request):
     welcome_section = Welcome.objects.all()
     services = Service.objects.all()[:3]
     teams = Team.objects.order_by('position')[:4]
+    testimonials = Testimonial.objects.order_by('-created_at')[:2]
     return render(request, 'crane/index.html', {
         'carousel': carousel,
         'home_right_images': home_right_images,
         'welcome_section': welcome_section,
         'services': services,
-        'teams': teams
+        'teams': teams,
+        'testimonials': testimonials
     })
 
 
