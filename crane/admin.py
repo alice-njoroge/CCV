@@ -5,7 +5,8 @@ from .models import (ContactMessage,
                      Carousel, HomeRight,
                      Welcome, DonationPledge,
                      Service, Team, Testimonial,
-                     AboutUs, WhatWeDo, Activities)
+                     AboutUs, WhatWeDo, Activities,
+                     Project)
 
 
 # Register your models here.
@@ -107,6 +108,14 @@ class AboutUsAdmin(admin.ModelAdmin):
         return True
 
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'image_url', 'action')
+    list_display_links = ('action',)
+
+    def action(self, obj):
+        return 'edit'
+
+
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Carousel, CarouselAdmin)
 admin.site.register(HomeRight, HomeRightAdmin)
@@ -116,6 +125,7 @@ admin.site.register(Service, ServicesAdmin)
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Testimonial, TestimonialAdmin)
 admin.site.register(AboutUs, AboutUsAdmin)
+admin.site.register(Project, ProjectAdmin)
 
 admin.site.site_title = 'CCV Admin'
 admin.site.site_header = 'CCV Admin'

@@ -224,3 +224,23 @@ class Activities(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Project(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='projects/')
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+    def image_url(self):
+        """allow image to be displayed in the admin as a thumbnail"""
+        url = self.image.url
+        return format_html(
+            '<a href="{}"><img style="height:70px;width:70px;" alt="25" src="{}"/></a>',
+            url,
+            url
+        )
+
+    image_url.allow_tags = True
