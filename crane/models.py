@@ -185,3 +185,42 @@ class Testimonial(models.Model):
         )
 
     avatar_url.allow_tags = True
+
+
+class AboutUs(models.Model):
+    title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='about_us/')
+    about_us = models.TextField()
+
+    class Meta:
+        verbose_name_plural = 'About Us'
+
+    def __str__(self):
+        return self.title
+
+    def image_url(self):
+        """allow image to be displayed in the admin as a thumbnail"""
+        url = self.image.url
+        return format_html(
+            '<a href="{}"><img style="height:70px;width:70px;" alt="25" src="{}"/></a>',
+            url,
+            url
+        )
+
+    image_url.allow_tags = True
+
+
+class WhatWeDo(models.Model):
+    title = models.CharField(max_length=100)
+    about_us = models.ForeignKey(AboutUs, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+
+class Activities(models.Model):
+    title = models.CharField(max_length=100)
+    about_us = models.ForeignKey(AboutUs, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title

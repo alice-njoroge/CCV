@@ -1,7 +1,11 @@
 from django.contrib import admin
 from django.contrib import messages
 
-from .models import ContactMessage, Carousel, HomeRight, Welcome, DonationPledge, Service, Team, Testimonial
+from .models import (ContactMessage,
+                     Carousel, HomeRight,
+                     Welcome, DonationPledge,
+                     Service, Team, Testimonial,
+                     AboutUs, WhatWeDo, Activities)
 
 
 # Register your models here.
@@ -75,6 +79,34 @@ class TestimonialAdmin(admin.ModelAdmin):
         return 'edit'
 
 
+class WhatWeDoInlineAdmin(admin.TabularInline):
+    model = WhatWeDo
+    verbose_name_plural = 'what we do'
+    fields = ('title',)
+    extra = 1
+
+
+class ActivitiesInlineAdmin(admin.TabularInline):
+    model = Activities
+    verbose_name_plural = 'Activities'
+    fields = ('title',)
+    extra = 1
+
+
+class AboutUsAdmin(admin.ModelAdmin):
+    inlines = [WhatWeDoInlineAdmin, ActivitiesInlineAdmin]
+    list_display = ('title', 'image_url', 'action')
+    list_display_links = ('action',)
+
+    def action(self, obj):
+        return 'edit'
+
+    def has_add_permission(self, request):
+        if AboutUs.objects.exists():
+            return False
+        return True
+
+
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Carousel, CarouselAdmin)
 admin.site.register(HomeRight, HomeRightAdmin)
@@ -83,6 +115,7 @@ admin.site.register(DonationPledge, DonationPledgeAdmin)
 admin.site.register(Service, ServicesAdmin)
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Testimonial, TestimonialAdmin)
+admin.site.register(AboutUs, AboutUsAdmin)
 
 admin.site.site_title = 'CCV Admin'
 admin.site.site_header = 'CCV Admin'
