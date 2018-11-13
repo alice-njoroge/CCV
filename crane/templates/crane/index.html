@@ -3,18 +3,42 @@
 {% block title %}
     Home |
 {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+    <!-- Place either at the bottom in the <head> of your page or inside your CSS -->
+    <style type="text/css">
+        .flex-caption {
+            width: 100%;
+            padding: 2%;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .5);
+            color: #fff;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+            font-size: 14px;
+            line-height: 18px;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <!---->
     <div class="banner-sec">
         <div class="banner-grids">
-            {% with banner_image=carousel.first %}
-                <div class="col-md-7 banner-left" style="url('{{ banner_image.image.url }}') no-repeat -72px 0px">
-                    <div class="banner_lft_info">
-                        <p><a href="projects.html">{{ banner_image.caption }}</a></p>
-                        <h3>{{ banner_image.sub_caption }}</h3>
-                    </div>
+            <div class="col-md-7">
+                <div class="flexslider">
+                    <ul class="slides">
+                        {% for carousel in carousel %}
+                            <li>
+                                <img src="{{ carousel.image.url }}"/>
+                                <p class="flex-caption">{{ carousel.caption }}
+                                    <br/>
+                                    {{ carousel.sub_caption }}
+                                </p>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-            {% endwith %}
+            </div>
             <div class="col-md-5 banner-right">
                 {% for home_right_image in home_right_images %}
                     <div class="bnr-right grid{{ forloop.counter }}"
@@ -181,4 +205,14 @@
         </div>
     </div>
     <!---->
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+    <script>
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide"
+            });
+        });
+    </script>
 {% endblock %}
