@@ -68,7 +68,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             href="{% url 'projects' %}">Projects</a></li>
                     <li {% if request.resolver_match.url_name == 'gallery' %}class="active"{% endif %}><a
                             href="{% url 'gallery' %}">Gallery</a></li>
-                    <li><a href="">Donate Now</a></li>
+                    <li><a href="{% url 'contact' %}">Donate Now</a></li>
                     <li {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}><a
                             href="{% url 'contact' %}">Contact</a></li>
                     {% if request.user.is_authenticated %}
@@ -81,49 +81,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {% block content %}
 
     {% endblock %}
-    <div class="footer">
-        <div class="container">
-            <div class="footer-sec">
-                <div class="col-md-4 ftr-grid1">
-                    <h3>Latest Tweets</h3>
-                    <div class="twts">
-                        <h5>Nunc porta justo eu varius mattis.</h5>
-                        <a href="mailto:example@gmail.com">http://www.example.com</a>
-                    </div>
-                    <div class="twts">
-                        <h5>Nunc porta justo eu varius mattis.</h5>
-                        <a href="mailto:example@gmail.com">http://www.example.com</a>
-                    </div>
-                </div>
-                <div class="col-md-4 news-ltr">
-                    <h3>NewsLetter</h3>
-                    <p>Praesent ex lectus, luctus ut enim sed, scelerisque laoreet massa. Fusce rhoncus massa dignissim
-                        suscipit varius.
-                        Donec vel congue libero. </p>
-                    <form>
-                        <input type="text" class="text" value="Enter Email" onfocus="this.value = '';"
-                               onblur="if (this.value == '') {this.value = 'Enter Email';}">
-                        <input type="submit" value="Go">
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-                <div class="col-md-4 social">
-                    <h3>Social Media</h3>
-                    <a href="#"><i class="facebook"></i></a>
-                    <a href="#"><i class="twitter"></i></a>
-                    <a href="#"><i class="dribble"></i></a>
-                    <a href="#"><i class="google"></i></a>
-                    <a href="#"><i class="youtube"></i></a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
+ 
     <!---->
     <div class="copywrite">
         <div class="container">
             <div class="ftr-logo">
-                <h3><a href="index.html"><img src="{% static 'images/ccv logo.jpg' %}"> Crane Conservation
+                <h3><a href="index.html"> Crane Conservation
                     Volunteers</a></h3>
             </div>
             <div class="ftr-right">

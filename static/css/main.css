@@ -7688,7 +7688,7 @@ h3.ghj {
     margin-top: 4%;
 }
 
-.contact-left input[type="text"] {
+.contact-left input[type="text"],input[type="email"] {
     width: 32.51%;
     margin: 0px;
     color: #333;
@@ -7700,7 +7700,6 @@ h3.ghj {
 
 .contact-left textarea {
     width: 100%;
-    color: #333;
     resize: none;
     background: none;
     height: 12.7em;
@@ -8732,6 +8731,16 @@ h3.ghj {
     .contact-left {
         margin-top: 1em;
     }
+
+
+  .form-control {
+    width: 32.5%;
+  }
+
+  .contact-left textarea {
+    width: 50%;  
+  }
+
 
     .contact-left textarea {
         height: 8.7em;

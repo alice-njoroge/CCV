@@ -18,18 +18,21 @@
             font-size: 14px;
             line-height: 18px;
         }
+        .banner-img{
+            max-height: 78vh !important;
+        }
     </style>
 {% endblock %}
 {% block content %}
     <!---->
     <div class="banner-sec">
         <div class="banner-grids">
-            <div class="col-md-7">
+            <div class="col-md-12">
                 <div class="flexslider">
                     <ul class="slides">
                         {% for carousel in carousel %}
                             <li>
-                                <img src="{{ carousel.image.url }}"/>
+                                <img class="banner-img" src="{{ carousel.image.url }}"/>
                                 <p class="flex-caption">{{ carousel.caption }}
                                     <br/>
                                     {{ carousel.sub_caption }}
@@ -39,20 +42,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-5 banner-right">
-                {% for home_right_image in home_right_images %}
-                    <div class="bnr-right grid{{ forloop.counter }}"
-                         style="background: url({{ home_right_image.image.url }}) no-repeat 0px 0px;">
-                        <div class="banner_rght_info">
-                            <p><a href="{{ home_right_image.image.url }}">{{ home_right_image.title }}</a></p>
-                            <h4>{{ home_right_image.subtitle }}</h4>
-                        </div>
-                    </div>
-                    {% if forloop.counter|divisibleby:2 %}
-                        <div class="clearfix"></div>
-                    {% endif %}
-                {% endfor %}
-            </div>
+                  
+
             <div class="clearfix"></div>
         </div>
     </div>
@@ -104,17 +95,11 @@
                         <h3>Team</h3>
                         <span></span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque distinctio, doloremque esse
-                        laboriosam porro sapiente sit soluta sunt voluptatem voluptatum? Aliquid animi esse illo impedit
-                        in laudantium optio sit, voluptate.</p>
+                    <p> We have a team of dedicated and self driven Conservationists who volunteer tirelessly to see to it that our objectves are met.</p>
+                    
+                    
                     <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque autem cupiditate
-                        dignissimos error eum ex id impedit ipsum iure, neque nostrum obcaecati, optio possimus repellat
-                        repellendus sapiente suscipit voluptas.</p>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque autem cupiditate
-                        dignissimos error eum ex id impedit ipsum iure, neque nostrum obcaecati, optio possimus repellat
-                        repellendus sapiente suscipit voluptas.</p>
+                    
                     <br>
                     {% for team in teams %}
                         <div class="grid_4">
@@ -167,16 +152,14 @@
                         <span></span>
                     </div>
                     <div class="news_sec">
-                        <img src="images/new.jpg" class="img-responsive" alt=""/>
-                        <h3><a href="#">Mauris hendrerit ex id leo elementum congue.</a></h3>
-                        <p>Praesent accumsan augue dolor, vel eleifend lorem pellentesque egestas. Ut sit amet iaculis
-                            erat.
-                            Cras venenatis sodales nibh non finibus.
-                            Mauris dapibus ex ante. Aenean quis vestibulum mi. Mauris scelerisque urna id lectus
-                            suscipit,
-                            sed mattis lorem congue. Fusce dapibus tempor
-                            augue. Ut ac pharetra nisl. </p>
-                        <a class="read" href="about.html">Read More...</a>
+                        <img src= "{% static  'images/crane1.jpg' %} " class="img-responsive" alt=""/>
+                        <h3><a href="https://www.theeastafrican.co.ke/magazine/Saving-the-Grey-Crowned-Crane/434746-4129882-lreoc9/index.html">A bird’s life: Saving the Grey Crowned Crane.</a></h3>
+                        <p>Summary:
+
+                            Cranes, like many other aquatic species, are indicators of the state of the environment. When we stop seeing cranes, it will mean that there are no more wetlands, an ecosystem crucial to the survival of the birds and to some extent humans, too, as an important source of freshwater.
+                            In Kenya, Lake Ol Bolossat, a pretty little lake on the foothills of the Aberdare Ranges in central Kenya, is home to about 900 Grey Crowned Cranes, and is listed as an Important Bird Area (IBA).
+                            Uganda has the largest population of Grey Crowned Cranes, also known as the Crested Crane.  </p>
+                        <a class="read" href="https://www.theeastafrican.co.ke/magazine/Saving-the-Grey-Crowned-Crane/434746-4129882-lreoc9/index.html">Read More...</a>
                     </div>
                 </div>
                 <div class="col-md-6 testimonal">
