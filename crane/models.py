@@ -244,3 +244,25 @@ class Project(models.Model):
         )
 
     image_url.allow_tags = True
+
+
+class Gallery(models.Model):
+    caption = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='projects/')
+
+    def __str__(self):
+        return self.caption
+
+    def image_url(self):
+        """allow image to be displayed in the admin as a thumbnail"""
+        url = self.image.url
+        return format_html(
+            '<a href="{}"><img style="height:70px;width:70px;" alt="25" src="{}"/></a>',
+            url,
+            url
+        )
+
+    image_url.allow_tags = True
+
+    class Meta:
+        verbose_name_plural = 'Galleries'

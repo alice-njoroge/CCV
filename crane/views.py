@@ -6,7 +6,7 @@ from .models import (Carousel, HomeRight,
                      Welcome, Service,
                      Team, Testimonial,
                      AboutUs, WhatWeDo,
-                     Activities, Project)
+                     Activities, Project, Gallery)
 
 
 def home(request):
@@ -40,7 +40,9 @@ def about(request):
 
 
 def gallery(request):
-    return render(request, 'crane/gallery.html')
+    sequence = Gallery.objects.all()
+    gallery = [sequence[i:i + 4] for i in range(0, len(sequence), 4)]
+    return render(request, 'crane/gallery.html', {'gallery': gallery})
 
 
 def projects(request):

@@ -55,12 +55,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="top-menu">
                 <span class="menu"><img src="{% static 'images/menu.png' %}" alt=""></span>
                 <ul class="nav1">
-                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'projects' %}">Projects</a></li>
-                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>
+                        <a href="{% url 'home' %}">Home</a></li>
+                    <li {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}>
+                        <a
+                                href="{% url 'about' %}">
+                            About</a></li>
+                    <li {% if request.resolver_match.url_name == 'projects' %}class="active"{% endif %}><a
+                            href="{% url 'projects' %}">Projects</a></li>
+                    <li {% if request.resolver_match.url_name == 'gallery' %}class="active"{% endif %}><a
+                            href="{% url 'gallery' %}">Gallery</a></li>
                     <li><a href="">Donate Now</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}><a
+                            href="{% url 'contact' %}">Contact</a></li>
                     {% if request.user.is_authenticated %}
                         <li><a href="/admin/">Admin</a></li>
                     {% endif %}
